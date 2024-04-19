@@ -1,0 +1,10 @@
+.card-front {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.card-front img {
+    width: 60%;
+    height: 20%;
+}
