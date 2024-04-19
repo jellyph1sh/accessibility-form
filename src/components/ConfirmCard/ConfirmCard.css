@@ -1,0 +1,27 @@
+.confirm-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.titles h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 32px;
+}
+
+.titles h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    color: hsl(279, 6%, 55%);
+}

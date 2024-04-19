@@ -1,7 +1,8 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import "./PayementForm.css";
 
-const PayementForm = () => {
+const PayementForm = ({setConfirm}) => {
     const [errors, setErrors] = useState({
         "cardname": "",
         "cardnumber": "",
@@ -85,11 +86,17 @@ const PayementForm = () => {
 
     const submitVerifications = (e) => {
         e.preventDefault();
-        setError("cardname", isBlank(e.target.cardname.value));
-        setError("cardnumber", isCardNumberValidInput(e.target.cardnumber.value));
-        setError("cardmonth", isCardMonthValidInput(e.target.cardmonth.value));
-        setError("cardyear", isCardYearValidInput(e.target.cardyear.value));
-        setError("cardcvc", isCardCVCValidInput(e.target.cardcvc.value));
+        const cardname = isBlank(e.target.cardname.value);
+        const cardnumber = isCardNumberValidInput(e.target.cardnumber.value);
+        const cardmonth = isCardMonthValidInput(e.target.cardmonth.value);
+        const cardyear = isCardYearValidInput(e.target.cardyear.value);
+        const cardcvc = isCardCVCValidInput(e.target.cardcvc.value);
+        setError("cardname", cardname);
+        setError("cardnumber", cardnumber);
+        setError("cardmonth", cardmonth);
+        setError("cardyear", cardyear);
+        setError("cardcvc", cardcvc);
+        if (cardname === "" && cardnumber === "" && cardmonth === "" && cardyear === "" && cardcvc === "") setConfirm(true);
     }
 
     return (
@@ -132,3 +139,7 @@ const PayementForm = () => {
 }
 
 export default PayementForm;
+
+PayementForm.propTypes = {
+  setConfirm: PropTypes.any.isRequired
+}
